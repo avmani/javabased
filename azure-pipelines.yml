@@ -9,20 +9,25 @@ trigger:
 pool: PEGA_INDFD
 
 steps:
-- task: Maven@4
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+- script: echo Hello world!
+  displayName: Say hello
 
-- task: CopyFiles@2
-  inputs:
-    Contents: '**/*.war'
-    TargetFolder: '$(build.artifactstagingdirectory)'
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: '.warfile'
-    publishLocation: 'Container'
+
+# steps:
+# - task: Maven@4
+#   inputs:
+#     mavenPomFile: 'pom.xml'
+#     mavenOptions: '-Xmx3072m'
+#     publishJUnitResults: true
+#     testResultsFiles: '**/surefire-reports/TEST-*.xml'
+#     goals: 'package'
+
+# - task: CopyFiles@2
+#   inputs:
+#     Contents: '**/*.war'
+#     TargetFolder: '$(build.artifactstagingdirectory)'
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+#     ArtifactName: '.warfile'
+#     publishLocation: 'Container'
